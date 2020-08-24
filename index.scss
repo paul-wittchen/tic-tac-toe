@@ -8,10 +8,20 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
     font-family: monospace;
 }
 
+.turn {
+    text-align: center;
+    color: black;
+    font-size: 64px;
+    font-family: monospace;
+    margin-bottom: -40px;
+    margin-top: 40px;
+}
+
+// Tic-Tac-Toe Board
 .board {
     width: 100vw;
     height: 80vh;
@@ -35,11 +45,6 @@ h1 {
     cursor: pointer;
 }
 
-.cell.x,
-.cell.circle {
-    cursor: not-allowed;
-}
-
 .cell:first-child,
 .cell:nth-child(2),
 .cell:nth-child(3) {
@@ -60,20 +65,27 @@ h1 {
     border-right: none;
 }
 
+// X and O
+
+.cell.x,
+.cell.circle {
+    cursor: not-allowed;
+}
+
 .cell.x::before,
 .cell.x::after,
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after {
-    content: '';
+    content: "";
     width: calc(140px * .9 * .15);
     height: calc(140px * .9);
-    background-color: black;
+    background-color: rgb(129, 16, 16);
     position: absolute;
 }
 
 .board.x .cell:not(.x):not(.circle):hover::before,
 .board.x .cell:not(.x):not(.circle):hover::after {
-    background-color: lightgrey;
+    background-color: rgb(255, 224, 224);
 }
 
 .cell.x::before,
@@ -86,24 +98,26 @@ h1 {
     transform: rotate(-45deg);
 }
 
+
 .cell.circle::before,
 .cell.circle::after,
 .board.circle .cell:not(.x):not(.circle):hover::before,
 .board.circle .cell:not(.x):not(.circle):hover::after  {
-    content: '';
+    content: "";
     width: calc(140px * .9);
     height: calc(140px * .9);
     background-color: transparent;
     position: absolute;
     border-radius: 50%;
-    border: 17px solid black;
+    border: 17px solid rgb(21, 48, 138);
 }
 
 .board.circle .cell:not(.x):not(.circle):hover::before,
 .board.circle .cell:not(.x):not(.circle):hover::after {
-    border: 17px solid lightgrey;
+    border: 17px solid rgb(207, 236, 255);
 }
 
+// Winning Message
 .winning-message {
     display: none;
     position: fixed;

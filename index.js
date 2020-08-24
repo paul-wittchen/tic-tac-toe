@@ -9,6 +9,7 @@ const WINNING_COMBINATIONS = [
 const cells = document.querySelectorAll("[data-cell]")
 const board = document.getElementById("board")
 const winningTextElement = document.querySelector("[data-message]")
+const turn = document.querySelector("[data-turn]")
 const winningElement = document.getElementById("message")
 const restartBtn = document.getElementById("button")
 let circleTurn
@@ -32,6 +33,7 @@ function handleClick(e) {
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     // place Mark
     placeMark(cell, currentClass)
+    whosturn()
     // check for win
     if (checkWin(currentClass)) {
         endGame(false)
@@ -85,6 +87,14 @@ function isDraw() {
         return cell.classList.contains(CIRCLE_CLASS) || 
         cell.classList.contains(X_CLASS)
     })
+}
+
+function whosturn() {
+    if (!circleTurn) {
+        turn.innerText = `O´s turn`
+    } else {
+        turn.innerText = `X´s turn`
+    }
 }
 
 restartBtn.addEventListener("click", startGame)
